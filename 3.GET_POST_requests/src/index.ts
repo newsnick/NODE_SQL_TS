@@ -5,13 +5,21 @@ const app = express()
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
-app.get('/:id', (req: Request, res: Response) => {
-  res.send('Hello World!')
+app.get('/Id/:id/Name/:name', (req: Request, res: Response) => {
+  res.send({
+    message: 'Hello World!',
+    id: req.params.id,
+    name: req.params.name,
+  })
 })
 
-app.post('/', (req: Request, res: Response) => {
+app.post('/Id/:id/Name/:name', (req: Request, res: Response) => {
   res.send({
     data: req.body,
+    params: {
+      id: req.params.id,
+      name: req.params.name,
+    },
   })
 })
 
